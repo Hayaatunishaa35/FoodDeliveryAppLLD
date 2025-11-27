@@ -76,4 +76,8 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public String getType(){
+        return "No type specified";
+    }
 }
