@@ -4,7 +4,7 @@ import java.util.*;
 
 import strategies.PaymentStrategy;
 
-public class Order {
+public abstract class Order {
     private static int nextOrderId = 0;
 
     protected int orderId;
@@ -77,7 +77,16 @@ public class Order {
         this.total = total;
     }
 
-    public String getType(){
-        return "No type specified";
+    public abstract String getType();
+
+    public boolean processPayment(){
+        if(paymentStrategy != null){
+            paymentStrategy.pay(total);
+            return true;
+        }
+
+        System.out.println("Please choose a payment mode");
+
+        return false;
     }
 }
